@@ -1,8 +1,156 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
+
+const education = [
+    {
+        institution: "IOE Thapathali Campus",
+        degree: "Bachelor of Engineering",
+        major: "Electronics and Communication Engineering",
+        period: "2014 – 2018",
+    },
+    {
+        institution: "Ambition Academy",
+        degree: "+2 Science",
+        major: "Biology",
+        period: "2012 – 2014",
+    },
+];
+
+const experience = [
+    {
+        company: "Maitri Services",
+        role: "Software QA Engineer",
+        period: "Jan 2026 – Present",
+        points: [
+            "Currently onboarding and undergoing domain & process training.",
+            "Learning US Healthcare workflows, compliance basics, and internal QA processes.",
+        ],
+    },
+    {
+        company: "FleetPanda",
+        role: "Software QA",
+        period: "Apr 2025 – Jan 2026",
+        points: [
+            "Ensured product quality through end-to-end testing (UI, API, backend).",
+            "Built and scaled Playwright automation framework for faster regression cycles.",
+            "Integrated QA into CI/CD pipelines, enabling shift-left testing.",
+            "Collaborated with engineers & SREs to prevent production incidents.",
+        ],
+    },
+    {
+        company: "LogPoint",
+        role: "Software Documentation Specialist",
+        period: "Jul 2022 – Apr 2025",
+        points: [
+            "Participated in QA testing of new product features prior to documentation.",
+            "Executed manual API testing using Postman to verify endpoints, responses, and expected behaviors.",
+            "Identified and reported UI and API issues via Jira, collaborating directly with QA and development teams.",
+            "Created and maintained detailed technical documentation including user manuals, API docs, and release notes.",
+        ],
+    },
+    {
+        company: "NeoSoftware",
+        role: "Web Developer",
+        period: "Oct 2020 – Jul 2022",
+        points: [
+            "Developed and maintained features in internal HR and dispatch management systems.",
+            "Performed manual and API testing; tracked issues via spreadsheets.",
+            "Assisted in server and DB setup for client environments.",
+            "Provided remote support to clients via TeamViewer, AnyDesk, and RDP.",
+        ],
+    },
+];
 ---
 
-<Layout>
-    <Welcome />
+<Layout title="Resume">
+    <main class="min-h-screen bg-gray-950 text-white py-20 px-6">
+        <div class="max-w-3xl mx-auto">
+            <!-- Page Title -->
+            <div class="text-center mb-16">
+                <p
+                    class="text-teal-400 text-sm font-medium uppercase tracking-widest mb-2"
+                >
+                    My Background
+                </p>
+                <h1 class="text-4xl font-bold text-white">Resume</h1>
+            </div>
+
+            <!-- Experience -->
+            <section class="mb-16">
+                <h2
+                    class="text-teal-400 text-xs font-bold uppercase tracking-widest mb-8 border-b border-white/10 pb-3"
+                >
+                    Experience
+                </h2>
+
+                <div class="flex flex-col gap-10">
+                    {
+                        experience.map((job) => (
+                            <div class="relative pl-6 border-l-2 border-teal-500/40">
+                                <div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-teal-400" />
+                                <div class="flex items-start justify-between gap-4 mb-1">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white">
+                                            {job.company}
+                                        </h3>
+                                        <p class="text-teal-300 text-sm">
+                                            {job.role}
+                                        </p>
+                                    </div>
+                                    <span class="shrink-0 text-xs text-gray-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+                                        {job.period}
+                                    </span>
+                                </div>
+                                <ul class="mt-3 flex flex-col gap-1.5">
+                                    {job.points.map((point) => (
+                                        <li class="text-sm text-gray-300 flex gap-2">
+                                            <span class="text-teal-400 mt-0.5">
+                                                ›
+                                            </span>
+                                            {point}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section>
+                <h2
+                    class="text-teal-400 text-xs font-bold uppercase tracking-widest mb-8 border-b border-white/10 pb-3"
+                >
+                    Education
+                </h2>
+
+                <div class="flex flex-col gap-10">
+                    {
+                        education.map((edu) => (
+                            <div class="relative pl-6 border-l-2 border-teal-500/40">
+                                <div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-teal-400" />
+                                <div class="flex items-start justify-between gap-4 mb-1">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white">
+                                            {edu.institution}
+                                        </h3>
+                                        <p class="text-teal-300 text-sm">
+                                            {edu.degree}
+                                        </p>
+                                        <p class="text-gray-400 text-sm">
+                                            {edu.major}
+                                        </p>
+                                    </div>
+                                    <span class="shrink-0 text-xs text-gray-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+                                        {edu.period}
+                                    </span>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+        </div>
+    </main>
 </Layout>
