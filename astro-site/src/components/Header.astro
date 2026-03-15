@@ -2,7 +2,8 @@
     <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="/" class="text-white font-bold text-lg">KaVeer Panthi</a>
 
-        <ul class="flex items-center gap-6">
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex items-center gap-6">
             <li>
                 <a
                     href="/"
@@ -28,5 +29,82 @@
                     >Contact</a>
             </li>
         </ul>
+
+        <!-- Hamburger Button (mobile only) -->
+        <button
+            id="menu-toggle"
+            class="md:hidden flex flex-col gap-1.5 p-2"
+            aria-label="Toggle navigation menu"
+        >
+            <span
+                id="bar1"
+                class="block w-6 h-0.5 bg-white transition-all duration-300"
+            ></span>
+            <span
+                id="bar2"
+                class="block w-6 h-0.5 bg-white transition-all duration-300"
+            ></span>
+            <span
+                id="bar3"
+                class="block w-6 h-0.5 bg-white transition-all duration-300"
+            ></span>
+        </button>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-gray-900 border-t border-white/10"
+    >
+        <ul class="flex flex-col px-6 py-4 gap-4">
+            <li>
+                <a
+                    href="/"
+                    class="text-sm text-gray-300 hover:text-white transition-colors"
+                    >Home</a>
+            </li>
+            <li>
+                <a
+                    href="/resume"
+                    class="text-sm text-gray-300 hover:text-white transition-colors"
+                    >Resume</a>
+            </li>
+            <li>
+                <a
+                    href="/skills"
+                    class="text-sm text-gray-300 hover:text-white transition-colors"
+                    >Skills</a>
+            </li>
+            <li>
+                <a
+                    href="/contact"
+                    class="text-sm text-gray-300 hover:text-white transition-colors"
+                    >Contact</a>
+            </li>
+        </ul>
+    </div>
 </header>
+
+<script is:inline>
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    const bar1 = document.getElementById("bar1");
+    const bar2 = document.getElementById("bar2");
+    const bar3 = document.getElementById("bar3");
+
+    let isOpen = false;
+    toggle.addEventListener("click", () => {
+        isOpen = !isOpen;
+        menu.classList.toggle("hidden");
+
+        if (isOpen) {
+            bar1.classList.add("rotate-45", "translate-y-2");
+            bar2.classList.add("opacity-0");
+            bar3.classList.add("-rotate-45", "-translate-y-2");
+        } else {
+            bar1.classList.remove("rotate-45", "translate-y-2");
+            bar2.classList.remove("opacity-0");
+            bar3.classList.remove("-rotate-45", "-translate-y-2");
+        }
+    });
+</script>
